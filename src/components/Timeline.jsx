@@ -155,7 +155,7 @@ export function Timeline({ proceso, step, onStep }) {
             type="button"
             disabled={step === 0}
             onClick={() => onStep(step - 1)}
-            className="min-h-11 rounded-lg px-4 text-sm font-bold text-plomo disabled:opacity-40 enabled:hover:bg-plomo-claro"
+            className="min-h-11 rounded-lg bg-azul px-5 text-sm font-bold text-white disabled:opacity-40 enabled:hover:bg-[#152a65]"
           >
             ← Paso anterior
           </button>
