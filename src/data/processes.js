@@ -358,11 +358,24 @@ const TITULACION = [
   }),
 ];
 
+/* ───────────── Documentación oficial (hojas del MPA en public/docs) ───────────── */
+const PDF_MPA = {
+  ingreso: 'docs/constancia-ingreso.pdf',
+  egreso: 'docs/constancia-egreso.pdf',
+  noadeudar: 'docs/constancia-no-adeudar.pdf',
+  estudios: 'docs/constancia-estudios.pdf',
+  'cert-estudios': 'docs/certificado-estudios.pdf',
+  modular: 'docs/certificado-modular.pdf',
+};
+const CON_PDF = CERTIFICATE_SUBPROCESSES.map((p) => ({ ...p, pdf: PDF_MPA[p.id] }));
+const delGrupo = (ids) => ids.map((id) => CON_PDF.find((p) => p.id === id));
+
 /* ───────────── Grupos que abren desde el catálogo ───────────── */
 export const GROUPS = {
   // Matrícula incluye también la convalidación a) entre planes y b) por unidades de competencia (capítulo 6 del MPA).
   matricula: { titulo: 'Matrícula', procesos: [...MATRICULA, ...TRASLADOS.filter((p) => p.id.startsWith('tra-conv'))] },
   traslados: { titulo: 'Traslados y convalidaciones', procesos: TRASLADOS },
-  certificados: { titulo: 'Certificados y constancias', procesos: CERTIFICATE_SUBPROCESSES },
+  constancias: { titulo: 'Constancias', procesos: delGrupo(['ingreso', 'egreso', 'noadeudar', 'estudios']) },
+  certificados: { titulo: 'Certificados', procesos: delGrupo(['cert-estudios', 'modular']) },
   titulacion: { titulo: 'Titulación', procesos: TITULACION },
 };

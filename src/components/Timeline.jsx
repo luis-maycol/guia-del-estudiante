@@ -97,6 +97,42 @@ export function Timeline({ proceso, step, onStep }) {
           <div className="min-w-0 flex-[1.6_1_320px]">
             <h4 className="text-2xl font-extrabold">{actual.corto}</h4>
             <p className="mt-3 text-base leading-relaxed text-slate-700">{actual.detalle}</p>
+
+            <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+              {(actual.tipo === 'solicitud' || actual.tipo === 'presentar') && (
+                <>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-plomo">Lleva contigo</p>
+                  <ul className="mt-3 flex flex-col gap-2">
+                    {proceso.requisitos.map((r) => (
+                      <li key={r} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-800">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rojo" />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {actual.tipo === 'caja' && (
+                <>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-plomo">Monto a pagar</p>
+                  <p className="mt-2 text-2xl font-extrabold">{proceso.costo}</p>
+                  <p className="text-xs text-plomo">{proceso.costoNota}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-700">
+                    Pago en efectivo, de forma presencial, directamente con el responsable de Caja del IES. Conserva tu
+                    recibo: es uno de los documentos que presentas con el FUT.
+                  </p>
+                </>
+              )}
+              {!['solicitud', 'presentar', 'caja'].includes(actual.tipo) && (
+                <>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-plomo">Qué sucede en este paso</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                    Esta etapa la realiza el IES internamente ({actual.responsable}). Tu trámite sigue en curso y el
+                    plazo total de atención es de <strong>{proceso.plazo}</strong>.
+                  </p>
+                </>
+              )}
+            </div>
           </div>
 
           <aside className="flex min-w-0 flex-[1_1_260px] flex-col gap-3">

@@ -16,7 +16,8 @@ npm run dev
 - `src/data/certificateProcesses.js` — datos reales del MPA (costos, plazos, requisitos, pasos y responsables).
 - `src/data/catalog.js` — tarjetas del catálogo de la landing.
 - `src/components/Hero.jsx` — hero de ancho completo (solo en la landing).
-- `src/pages/` — una página por tarjeta del catálogo, cada una con su URL: `/matricula`, `/traslados`, `/constancias`, `/certificados`, `/titulacion`, `/enfermeria` (y `/matricula/mat-reserva` para un trámite concreto). `LandingPage` es `/`. `pages/index.js` las registra y `App.jsx` define las rutas con react-router-dom.
+- `src/pages/` — una página por tarjeta del catálogo, cada una con su URL: `/matricula`, `/traslados`, `/constancias`, `/certificados`, `/titulacion`, `/enfermeria` (y `/matricula/mat-reserva` para un trámite concreto). `LandingPage` es `/landing`. `pages/index.js` las registra y `App.jsx` define las rutas.
+- `public/docs/` — hojas oficiales del Manual de Procesos Académicos (PDF) de cada constancia y certificado; se abren con el botón "Documentación oficial".
 - `src/components/ProcessDetail.jsx` — vista de trámite que reutilizan las páginas (filtro, línea de tiempo y requisitos).
 - `src/components/Timeline.jsx` — línea de tiempo interactiva.
 - `public/escudo.png` — escudo institucional (fondo en mosaico y hero). `public/hero.png` — foto del hero.

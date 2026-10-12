@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { GROUPS } from '../data/processes.js';
+import { asset } from '../lib/asset.js';
 import { Icon } from './Icon.jsx';
 import { Timeline } from './Timeline.jsx';
 
@@ -57,13 +58,6 @@ export function ProcessDetail({ groupId, path, defaultId }) {
             <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">{proceso.title}</h1>
             <p className="mt-3 text-[15px] leading-relaxed text-blue-100">{proceso.summary}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="flex min-h-11 items-center gap-2 rounded-lg bg-white px-5 text-sm font-bold text-texto hover:bg-slate-100"
-          >
-            <Icon name="imprimir" size={18} /> Imprimir ficha
-          </button>
         </header>
 
         {/* Filtro de los 6 subprocesos */}
@@ -111,12 +105,24 @@ export function ProcessDetail({ groupId, path, defaultId }) {
           <p className="mt-5 text-xs leading-relaxed text-plomo">
             El monto puede ajustarse; el IES lo comunica antes del pago. El pago se hace directamente con el responsable de Caja.
           </p>
-          <a
-            href="lading"
-            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-rojo px-5 text-sm font-bold text-white hover:bg-[#7f1616]"
-          >
-            <Icon name="descargar" size={18} /> Descargar Formato FUT (PDF)
-          </a>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a
+              href="lading"
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-rojo px-5 text-sm font-bold text-white hover:bg-[#7f1616]"
+            >
+              <Icon name="descargar" size={18} /> Descargar Formato FUT (PDF)
+            </a>
+            {proceso.pdf && (
+              <a
+                href={asset(proceso.pdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-azul px-5 text-sm font-bold text-azul hover:bg-blue-50"
+              >
+                <Icon name="solicitud" size={18} /> ¿Dudas? Lee el Manual oficial (PDF)
+              </a>
+            )}
+          </div>
         </section>
       </div>
     </div>
