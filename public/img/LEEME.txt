@@ -1,0 +1,4 @@
+Imagenes de las tarjetas del catalogo (nombres usados en src/data/catalog.js):
+  matricula.webp  traslados.webp  constancias.webp  certificados.webp  titulacion.webp  enfermeria.webp
+Foto del hero: public/hero.webp (a pantalla completa).
+Para cambiar una imagen, reemplaza el archivo con el mismo nombre.

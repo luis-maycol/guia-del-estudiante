@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guía del Estudiante</title>
+    <!-- GitHub Pages: redirige cualquier ruta (/matricula) al index.html conservando la ruta.
+         pathSegmentsToKeep = 1 para sitios de proyecto (usuario.github.io/repositorio/); usa 0 si el sitio está en la raíz. -->
+    <script>
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

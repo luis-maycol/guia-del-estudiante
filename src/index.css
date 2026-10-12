@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --color-rojo: #991b1b;
+  --color-amarillo: #d97706;
+  --color-azul: #1e3a8a;
+  --color-plomo: #64748b;
+  --color-azul-footer: #0f2438;
+  --color-plomo-claro: #f1f5f9;
+  --color-texto: #0f172a;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-texto);
+  background: #f4f6fa;
+}
+
+/* Escudo institucional repetido en mosaico, solo en la vista del proceso */
+.escudo-mosaico {
+  position: relative;
+  background-color: #f4f6fa;
+  overflow: hidden;
+}
+.escudo-mosaico::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/escudo.png');
+  background-repeat: repeat;
+  background-size: 230px auto;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.escudo-mosaico > * {
+  position: relative;
+}
+
+/* Lienzo punteado del bloque de la línea de tiempo */
+.lienzo-puntos {
+  background-color: #ffffff;
+  background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
