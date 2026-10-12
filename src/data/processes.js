@@ -360,7 +360,8 @@ const TITULACION = [
 
 /* ───────────── Grupos que abren desde el catálogo ───────────── */
 export const GROUPS = {
-  matricula: { titulo: 'Matrícula', procesos: MATRICULA },
+  // Matrícula incluye también la convalidación a) entre planes y b) por unidades de competencia (capítulo 6 del MPA).
+  matricula: { titulo: 'Matrícula', procesos: [...MATRICULA, ...TRASLADOS.filter((p) => p.id.startsWith('tra-conv'))] },
   traslados: { titulo: 'Traslados y convalidaciones', procesos: TRASLADOS },
   certificados: { titulo: 'Certificados y constancias', procesos: CERTIFICATE_SUBPROCESSES },
   titulacion: { titulo: 'Titulación', procesos: TITULACION },
